@@ -1,0 +1,207 @@
+<!--Here Internal css is applied!-->
+<html>
+<head>
+  <style>
+    /* CSS styles for the navigation bar */
+    ul.navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    ul.navbar li {
+      float: right;
+    }
+	ul.navbar li.navbar-title {
+      float: left;
+    }
+    ul.navbar li.logo {
+      float: left;
+    }
+
+    ul.navbar li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+	  margin-left: 10px;
+      text-decoration: none;
+    }
+
+    ul.navbar li a:hover {
+      background-color: #111;
+    }
+
+    ul.navbar li.logo img {
+      vertical-align: middle;
+      margin-right: 20px;
+      height: 80px; /* Adjust the height as needed */
+    }
+	@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100px);
+    opacity: 1;
+  }
+}
+
+ul.navbar li.navbar-title h3 {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 30px;
+  color: pink;
+  font-style: italic;
+  font-family: 'cursive', Fantasy;
+  transform: translateX(-100%);
+  opacity: 0;
+ 
+  animation: slide-in 1s ease-in-out forwards;
+}
+    
+   
+	
+	.slideshow-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .slideshow-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* CSS styles for the slideshow navigation dots */
+    .dot-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+      background-color: #717171;
+    }
+	
+.footer {
+            background-color: black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .social-icons {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .social-icons li {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .social-icons li a {
+            color: #555;
+            text-decoration: none;
+            font-size: 30px;
+        }
+		.footer-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .footer-content p {
+        margin: 0;
+        color: white;
+        flex: 1;
+    }
+</style>
+
+ 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+  
+  <ul class="navbar">
+    <li class="logo">
+      <img src="img/logo.jpg" alt="Logo">
+    </li>
+	<li class="navbar-title">
+      <h3>PANKALI.COM</h3>
+    </li>
+    <li><a href="contact2.html">Contact Us</a></li>
+    <li><a href="register3.html">Sign Up</a></li>
+    <li><a href="login3.html">Sign In</a></li>
+    <li><a href="about3.html">About Us</a></li>
+  </ul>
+   <div class="slideshow-container">
+    <img class="slideshow-image" src="img/1.jpg" alt="Image 1">
+    <img class="slideshow-image" src="img/2.jpg" alt="Image 2">
+    <img class="slideshow-image" src="img/3.jpg" alt="Image 3">
+	<img class="slideshow-image" src="img/4.jpg" alt="Image 4">
+    <img class="slideshow-image" src="img/5.jpg" alt="Image 5">
+  </div>
+
+  <!-- Slideshow navigation dots -->
+  <div class="dot-container">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+	<span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <!-- JavaScript code for the slideshow functionality -->
+  <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("slideshow-image");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, 3000); // Change slide every 3 seconds
+    }
+  </script>
+    <footer class="footer">
+    <div class="footer-content">
+	<p>&copy; 2023 Your Website. All rights reserved.</p>
+        <ul class="social-icons">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+        
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/style3.css">
+</head>
+<style>
+.error {
+            color: red;
+        }
+		</style>
+<body>
+  <ul class="navbar">
+    <li class="logo">
+      <img src="img/logo.jpg" alt="Logo">
+    </li>
+	<li class="navbar-title">
+      <h3>PANKALI.COM</h3>
+    </li>
+    <li><a href="home3.html">Back</a></li>
+	<li><a href="login3.html">Sign In</a></li>
+    
+  </ul>
+  <div class="container">
+    <h1>Register</h2>
+    <form action="/Register" method="post" id="registerform">
+	<div>
+	<div class="clearfix">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="fname" name="fname" required>
+      </div>
+      <div class="clearfix">
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lname" name="lname" required>
+      </div>
+ 
+     <div class="clearfix">
+    <label for="dob">DOB:</label>
+    <input type="date" id="dob" name="dob" required>
+  </div>
+ 
+  <div class="clearfix">
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+  </div>
+<div class="clearfix">
+<label for="age">Gender:</label><br>
+<input type="radio" id="male" name="gender" value="male">
+<label for="male">Male</label>
+
+<input type="radio" id="female" name="gender" value="female">
+<label for="female">Female</label>
+
+<input type="radio" id="other" name="gender" value="other">
+<label for="other">Transgender</label>
+  </div>
+<br>
+  <div class="clearfix">
+    <label for="phonenumber">Phone Number:</label>
+    <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  required>
+  </div>
+
+  <div class="clearfix">
+    <label for="mailid">Email:</label>
+    <input type="email" id="mailid" name="email" required>
+  </div>
+
+  <div class="clearfix">
+    <label for="address">Address:</label>
+	<textarea id="address" name="address" rows="3" required></textarea>
+  </div>
+
+  <div class="clearfix" >
+    <label for="state">State:</label>
+    <select name="state" id="state">
+
+            <option value="State 1">Kerala</option>
+            <option value="State 2">Goa</option>
+            <option value="State 3">Hariyana</option>
+            <option value="State 4">TamilNadu</option>
+            <option value="State 5">Maharashtra</option>
+
+        </select>
+    </div>
+ <div class="clearfix">
+        <label for="city">City:</label>
+        <select name="city" id="city">
+           
+            <option value="">-- Select a State First --</option>
+        </select>
+    </div>
+  
+  <div class="clearfix">
+   <label for="username">User Name:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="clearfix">
+	  <label for="username">Password:</label>
+        <input type="password" id="password"  name="password" required>
+      </div>
+	  <div class="clearfix">
+	  <label for="cpassword">Confirm Password:</label>
+        <input type="password" id="cpassword"  name="cpassword" required>
+      </div>
+       
+    <div id="register"></div>
+        <button type="submit" class="btn btn-custom btn-lg">Register</button>
+    </div>
+        </form>
+		
+		<script>
+        document.getElementById('registerform').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var fname = document.getElementById('fname').value;
+            var lname = document.getElementById('lname').value;
+			 var dob= document.getElementById('dob').value;
+            var age = document.getElementById('age').value;
+			var phonenumber = document.getElementById('phonenumber').value;
+			 var mailid= document.getElementById('mailid').value;
+            var address = document.getElementById('address').value;
+			var state= document.getElementById('state').value;
+			var city= document.getElementById('city').value;
+			var username = document.getElementById('username').value;
+			var password= document.getElementById('password').value;
+			var cpassword= document.getElementById('cpassword').value;
+
+            var valid = validatePassword(password);
+
+            if (valid) {
+                // Password is valid, perform login logic here
+                console.log('Login successful');
+                // You can redirect the user or perform any other actions after successful login
+            } else {
+                // Password is not valid, display error message
+                var errorElement = document.createElement('span');
+                errorElement.className = 'error';
+                errorElement.textContent = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.';
+                var passwordInput = document.getElementById('password');
+                passwordInput.parentNode.insertBefore(errorElement, passwordInput.nextSibling);
+            }
+        });
+
+        function validatePassword(password) {
+            <!--var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            //return passwordRegex.test(password);
+			var password = document.getElementById("password").value;
+
+            if (password === "") {
+                showAlert("Please enter a password");
+            } else if (password.length < 8) {
+                showAlert("Password must be at least 8 characters long");
+            } else if (!/\d/.test(password)) {
+                showAlert("Password must contain at least one digit");
+            } else if (!/[a-z]/.test(password)) {
+                showAlert("Password must contain at least one lowercase letter");
+            } else if (!/[A-Z]/.test(password)) {
+                showAlert("Password must contain at least one uppercase letter");
+            } else {
+                // Password is valid, perform login logic here
+                console.log('Login successful');
+                // You can redirect the user or perform any other actions after successful login
+            }
+        }
+
+       function showAlert(message) {
+            alert(message);
+        }
+    </script>
+		
+		<script>
+    document.getElementById("state").addEventListener("change", function() {
+        var stateId = this.value;
+        var citySelect = document.getElementById("city");
+        citySelect.innerHTML = "";
+        if (stateId) {
+            if (stateId === "State 1") {
+                // Populate branch options for District 1
+                var city = {
+                    "City 1A": "Kottayam",
+                    "City 1B": "Alappuzha",
+                    "City 1C": "Kannur",
+                    "City 1D": "Ernakulam"
+
+
+                };
+            } else if (stateId === "State 2") {
+                // Populate branch options for District 2
+                var city = {
+                    "City 2A": "Panaji",
+                    "City 2B": "Margao",
+                    "City 2C": "Mapusa",
+                    "City 2D": "Canacona"
+                };
+            } else if (stateId === "State 3") {
+                // Populate branch options for District 2
+                var city = {
+                    "City 3A": "Gurgaon",
+                    "City 3B": "Faridabad",
+                    "City 3C": "Chandigarh",
+                    "City 3D": "Karnal"
+                };
+            } else if (stateId === "State 4") {
+                // Populate branch options for District 2
+                var city = {
+                    "City 4A": "Chennai",
+                    "City 4B": "Vellore",
+                    "City 4C": "Madurai",
+                    "City 4D": "Coimbatore"
+                };
+
+            } else if (stateId === "State 5") {
+                // Populate branch options for District 2
+                var city = {
+                    "City 5A": "Mumbai",
+                    "City 5B": "Jalna",
+                    "City 5C": "Pune",
+                    "City 5D": "Nashik"
+                };
+
+
+            }
+
+            // Add branch options to the dropdown
+            for (var key in city) {
+                var option = document.createElement("option");
+                option.value = city[key];
+                option.text = city[key];
+                citySelect.add(option);
+            }
+        }
+    });
+</script>
+    </div>
+  </div>
+
+    </div>
+	 <footer class="footer">
+    <p>&copy; 2023 Your Website. All rights reserved.</p>
+  </footer>
+ 
+</body>
+</html>

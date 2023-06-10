@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/style3.css">
+</head>
+<body>
+  <ul class="navbar">
+    <li class="logo">
+      <img src="img/logo.jpg" alt="Logo">
+    </li>
+	<li class="navbar-title">
+      <h3>PANKALI.COM</h3>
+    </li>
+    <li><a href="home03.html">Back</a></li>
+    
+  </ul>
+<div class="container">
+    <h1>Login</h1>
+    <form action="/login" method="post">
+	<div>
+      <div class="clearfix">
+        <input type="email" id="email" placeholder="Email Address" name="email" onfocusout="validateEmail()">
+      </div>
+      <div class="clearfix">
+        <input type="password" id="password" placeholder="Password" name="password" onfocusout="validatePassword()">
+      </div>
+<div class="clearfix">
+<label for="remember">
+      <input type="checkbox" id="remember" name="remember">
+      Remember Me
+    </label>
+
+ <a href="forgot_password.html">Forgot Password?</a>
+</div>
+      <button type="submit" value="Login">Login</button>
+<br>
+<label for="member">
+Not a member? <a href="register2.html">Signup Now</a>
+    </form>
+  </div></div>
+  <div id="alertContainer"></div>
+  <footer class="footer">
+    <p>&copy; 2023 Your Website. All rights reserved.</p>
+  </footer>
+     <script>
+    function validateEmail() {
+      var email = document.getElementById("email").value;
+
+      if (email === "") {
+        showAlert("Please enter your Email Address");
+      }
+    }
+
+    function validatePassword() {
+      var password = document.getElementById("password").value;
+
+      if (password === "") {
+        showAlert("Please enter a password");
+      }
+    }
+	function showAlert(message) {
+	
+      var alertElement = document.createElement("div");
+      alertElement.classList.add("alert");
+      alertElement.textContent = message;
+		var alertContainer = document.getElementById("alertContainer");
+		alertContainer.appendChild(alertElement);
+      
+      
+      setTimeout(function() {
+        alertElement.remove();
+      }, 3000);
+    }
+  </script>
+ 
+</body>
+</html>

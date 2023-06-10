@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/style3.css">
+</head>
+<body>
+  <ul class="navbar">
+    <li class="logo">
+      <img src="img/logo.jpg" alt="Logo">
+    </li>
+	<li class="navbar-title">
+      <h3>PANKALI.COM</h3>
+    </li>
+    <li><a href="home03.html">Back</a></li>
+    
+  </ul>
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form action="/contact" method="post">
+	<div>
+      <div class="clearfix">
+	   <label for="fname">First Name</label>
+        <input type="text" id="fname"  name="fname" onfocusout="validateFname()">
+      </div>
+      <div class="clearfix">
+	   <label for="fname">Last Name</label>
+        <input type="text" id="password" name="lname" onfocusout="validateLname()">
+      </div>
+ 
+   
+    <div class="clearfix">
+    <label for="country">Country</label>
+    <select id="state" name="country" onfocusout="validateState()">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+	</div>
+	<div class="clearfix">
+    <label for="subject">Subject:</label>
+	<textarea id="subject" name="subject" rows="3" required onfocusout="validateSubject()"></textarea>
+  </div></div>
+<div id="alertContainer"></div>
+   <div>
+        <button type="submit" class="btn btn-custom btn-lg">Contact US</button></div>
+  </form>
+  
+
+ <footer class="footer">
+    <p>&copy; 2023 Your Website. All rights reserved.</p>
+  </footer>
+ <script>
+   document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            validateFname();
+            validateLname();
+            validateState();
+            validateSubject();
+        });
+    function validateFname() {
+      var fname = document.getElementById("fname").value;
+
+      if (fname === "") {
+        showAlert("Please enter your First Name");
+      }
+    }
+
+    function validateLname() {
+      var lname= document.getElementById("lname").value;
+
+      if (lname === "") {
+        showAlert("Please enter your Last Name");
+      }
+    }
+	 function validateState() {
+      var state = document.getElementById("state").value;
+
+      if (state === "") {
+        showAlert("Please enter your State");
+      }
+    }
+	 function validateSubject() {
+      var subject = document.getElementById("subject").value;
+
+      if (subject === "") {
+        showAlert("Please enter the message");
+      }
+    }
+	function showAlert(message) {
+	
+      var alertElement = document.createElement("div");
+      alertElement.classList.add("alert");
+      alertElement.textContent = message;
+		var alertContainer = document.getElementById("alertContainer");
+		alertContainer.appendChild(alertElement);
+      
+      
+      setTimeout(function() {
+        alertElement.remove();
+      }, 10000);
+    }
+  </script>
+</body>
+</html>
